@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Vignan University — Student Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="university-watermark" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" aria-label="Vignan University home">
+        <img class="university-logo" src="https://vignan.ac.in/images/LOGO_change.jpg" alt="Vignan University logo">
+        <span class="brand-name">Student<br><span>Management Portal</span></span>
+      </a>
+      <div class="workspace-label">STUDENT MANAGEMENT</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span class="nav-icon">▦</span> Overview</a>
+        <a class="nav-link" href="#registration"><span class="nav-icon">♙</span> Students</a>
+        <a class="nav-link" href="#performance"><span class="nav-icon">⌁</span> Performance</a>
+        <a class="nav-link" href="#marks"><span class="nav-icon">▤</span> Marks details</a>
+        <a class="nav-link" href="#fees"><span class="nav-icon">₹</span> Fee details</a>
+        <a class="nav-link" href="#parents"><span class="nav-icon">♧</span> Parents</a>
+        <a class="nav-link" href="#education"><span class="nav-icon">▣</span> Previous education</a>
+        <a class="nav-link" href="#schedule"><span class="nav-icon">◷</span> Class schedule</a>
+        <a class="nav-link" href="#academic-calendar"><span class="nav-icon">▦</span> Academic calendar</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <strong>Need a hand?</strong>
+          <p>Visit the help center for tips and guides.</p>
+          <button id="helpButton">Open help center <span>↗</span></button>
+        </div>
+        <button class="nav-link settings-link" id="settingsButton">
+          <span class="nav-icon">⚙</span> Settings
+        </button>
+        <div class="profile-mini">
+          <div class="avatar avatar-purple">UA</div>
+          <div><strong>University Admin</strong><span>Portal administrator</span></div>
+          <button aria-label="Profile menu">···</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuButton" aria-label="Toggle menu">☰</button>
+        <div class="breadcrumb">Pages <span>/</span> <strong>Overview</strong></div>
+        <div class="top-actions">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="globalSearch" type="search" placeholder="Search students, courses..." aria-label="Search">
+          </label>
+          <button class="icon-button notification-button" aria-label="Notifications">♧<i></i></button>
+          <div class="avatar avatar-purple top-avatar">UA</div>
+        </div>
+      </header>
+
+      <section class="page-heading" id="overview">
+        <div>
+          <div class="eyebrow" id="dashboardDate"></div>
+          <h1>Vignan University student portal <span class="wave">✦</span></h1>
+          <p>Student records, academic progress, fee status and class schedules.</p>
+        </div>
+        <button class="primary-button" id="addStudentButton"><span>＋</span> Add student</button>
+      </section>
+
+      <section class="registration-workspace" id="registration" aria-label="Register a student">
+        <article class="wizard-card">
+          <div class="wizard-heading">
+            <div>
+              <div class="section-kicker">NEW STUDENT PROFILE</div>
+              <h2>Student registration</h2>
+              <p>Fill one section at a time. Your progress is saved to the student list when you finish.</p>
+            </div>
+            <span class="wizard-badge">✦ Guided entry</span>
+          </div>
+
+          <div class="wizard-progress" id="wizardProgress" aria-label="Registration progress">
+            <div class="wizard-progress-line"><i id="wizardProgressFill"></i></div>
+            <button type="button" class="wizard-step-dot active" data-go-step="0"><span>1</span><small>Profile</small></button>
+            <button type="button" class="wizard-step-dot" data-go-step="1"><span>2</span><small>Academics</small></button>
+            <button type="button" class="wizard-step-dot" data-go-step="2"><span>3</span><small>Family</small></button>
+            <button type="button" class="wizard-step-dot" data-go-step="3"><span>4</span><small>Education</small></button>
+            <button type="button" class="wizard-step-dot" data-go-step="4"><span>5</span><small>Fees</small></button>
+            <button type="button" class="wizard-step-dot" data-go-step="5"><span>6</span><small>Review</small></button>
+          </div>
+
+          <form id="studentForm" class="student-wizard" novalidate>
+            <section class="wizard-page active" data-wizard-page="0">
+              <div class="wizard-page-title">
+                <span class="wizard-icon">♙</span>
+                <div><h3>Student profile</h3><p>Start with the student's basic information.</p></div>
+              </div>
+              <div class="wizard-fields">
+                <label>Full name <input name="name" required placeholder="Enter student's full name"></label>
+                <label>Student ID <input name="studentId" required placeholder="Enter student ID"></label>
+                <label>Department
+                  <select name="department" required>
+                    <option value="">Choose department</option>
+                    <option>Engineering</option><option>Business</option>
+                    <option>Arts &amp; Humanities</option><option>Sciences</option><option>Other</option>
+                  </select>
+                </label>
+                <label>Programme / course <input name="course" placeholder="Enter programme or course"></label>
+                <label>Year and section <input name="year" placeholder="e.g. Year 1 · Section A"></label>
+                <label>Student email <input name="email" type="email" placeholder="Enter email address"></label>
+                <label>Phone number <input name="phone" type="tel" placeholder="Enter phone number"></label>
+              </div>
+            </section>
+
+            <section class="wizard-page" data-wizard-page="1">
+              <div class="wizard-page-title">
+                <span class="wizard-icon">✧</span>
+                <div><h3>Academic performance &amp; marks</h3><p>Enter current progress and an optional subject mark.</p></div>
+              </div>
+              <div class="wizard-fields">
+                <label>Current GPA <input name="gpa" type="number" min="0" max="4" step="0.01" placeholder="Out of 4.0"></label>
+                <label>Attendance (%) <input name="attendance" type="number" min="0" max="100" placeholder="Enter percentage"></label>
+                <label>Semester
+                  <select name="semester">
+                    <option value="">Choose semester</option>
+                    <option>Semester 1</option><option>Semester 2</option>
+                    <option>Semester 3</option><option>Semester 4</option>
+                    <option>Semester 5</option><option>Semester 6</option>
+                    <option>Semester 7</option><option>Semester 8</option>
+                  </select>
+                </label>
+                <label>Subject <input name="subject" placeholder="Enter subject name"></label>
+                <label>Internal marks / 30 <input name="internal" type="number" min="0" max="30" placeholder="Optional"></label>
+                <label>End-semester marks / 70 <input name="exam" type="number" min="0" max="70" placeholder="Optional"></label>
+              </div>
+            </section>
+
+            <section class="wizard-page" data-wizard-page="2">
+              <div class="wizard-page-title">
+                <span class="wizard-icon">♧</span>
+                <div><h3>Parent or guardian</h3><p>Add a family contact for this student.</p></div>
+              </div>
+              <div class="wizard-fields">
+                <label>Parent / guardian name <input name="guardianName" placeholder="Enter full name"></label>
+                <label>Relationship <input name="relation" placeholder="Mother, father, guardian..."></label>
+                <label>Phone number <input name="guardianPhone" type="tel" placeholder="Enter contact number"></label>
+                <label>Email address <input name="guardianEmail" type="email" placeholder="Enter email address"></label>
+              </div>
+            </section>
+
+            <section class="wizard-page" data-wizard-page="3">
+              <div class="wizard-page-title">
+                <span class="wizard-icon">▣</span>
+                <div><h3>Previous education</h3><p>Record Intermediate/12th and 10th standard details.</p></div>
+              </div>
+              <div class="wizard-fields">
+                <label>Intermediate / 12th board <input name="interBoard" placeholder="Enter board name"></label>
+                <label>Intermediate / 12th marks <input name="interScore" placeholder="Marks or percentage"></label>
+                <label>10th standard board <input name="tenthBoard" placeholder="Enter board name"></label>
+                <label>10th standard marks <input name="tenthScore" placeholder="Marks or percentage"></label>
+              </div>
+            </section>
+
+            <section class="wizard-page" data-wizard-page="4">
+              <div class="wizard-page-title">
+                <span class="wizard-icon">₹</span>
+                <div><h3>Fee details</h3><p>Add the student's current academic year fee information.</p></div>
+              </div>
+              <div class="wizard-fields">
+                <label>Academic year <input name="feeYear" placeholder="Enter academic year"></label>
+                <label>Total fee (₹) <input name="totalFee" type="number" min="0" step="0.01" placeholder="Enter total fee"></label>
+                <label>Amount paid (₹) <input name="paidFee" type="number" min="0" step="0.01" placeholder="Enter paid amount"></label>
+              </div>
+            </section>
+
+            <section class="wizard-page review-page" data-wizard-page="5">
+              <div class="wizard-page-title">
+                <span class="wizard-icon">✓</span>
+                <div><h3>Review &amp; save</h3><p>Check the student profile before adding it to the saved list.</p></div>
+              </div>
+              <div id="reviewSummary" class="review-summary"><p>Your completed sections will appear here.</p></div>
+            </section>
+
+            <div class="wizard-alert" id="wizardAlert" role="alert"></div>
+            <div class="wizard-actions">
+              <button type="button" class="secondary-button" id="wizardBack" disabled>← Back</button>
+              <span id="wizardStepLabel">Step 1 of 6</span>
+              <button type="button" class="primary-button" id="wizardNext">Continue <span>→</span></button>
+              <button type="submit" class="primary-button finish-button" id="wizardSave" hidden>Save student <span>✓</span></button>
+            </div>
+          </form>
+        </article>
+
+        <aside class="saved-students-panel">
+          <div class="saved-list-heading">
+            <div><div class="section-kicker">YOUR RECORDS</div><h2>Saved students</h2><p id="savedStudentCount">0 student profiles</p></div>
+            <span class="saved-count-badge" id="savedCountBadge">0</span>
+          </div>
+          <label class="saved-search"><span>⌕</span><input id="savedStudentSearch" type="search" placeholder="Find a student" aria-label="Find saved student"></label>
+          <div class="saved-student-list" id="savedStudentList">
+            <div class="saved-empty"><span>♙</span><strong>No students added yet</strong><small>Completed profiles will appear in this list.</small></div>
+          </div>
+          <div class="selected-student-card" id="selectedStudentCard">
+            <div class="selected-placeholder"><span>↙</span><p>Select a saved student to view their details.</p></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="stats-grid" aria-label="University statistics">
+        <article class="stat-card"><div class="stat-top"><span>Total students</span><span class="stat-icon violet">♙</span></div><div class="stat-number" id="totalStudents">0</div><div class="stat-foot"><span>Student records</span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>Average GPA</span><span class="stat-icon blue">✧</span></div><div class="stat-number" id="averageGpa">—<span class="stat-unit">/ 4.0</span></div><div class="stat-foot"><span>From student records</span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>Attendance rate</span><span class="stat-icon green">◷</span></div><div class="stat-number" id="averageAttendance">—<span class="stat-unit">%</span></div><div class="stat-foot"><span>From student records</span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>At-risk students</span><span class="stat-icon orange">⚑</span></div><div class="stat-number" id="atRiskStudents">0</div><div class="stat-foot"><span>GPA below 2.5 or attendance below 75%</span></div></article>
+      </section>
+
+      <section class="content-grid" id="performance">
+        <article class="panel performance-panel">
+          <div class="panel-heading"><div><h2>Academic performance</h2><p>Grade point average across departments</p></div><select id="performancePeriod"><option>This semester</option><option>This academic year</option></select></div>
+          <div class="chart-legend"><span><i class="legend-dot"></i> Average GPA</span><span class="muted-legend">Max 4.0</span></div>
+          <div class="empty-chart"><span>⌁</span><strong>No performance data yet</strong><small>Add student marks to see GPA trends here.</small></div>
+        </article>
+        <article class="panel department-panel">
+          <div class="panel-heading"><div><h2>Department overview</h2><p>Student distribution by department</p></div></div>
+          <div class="empty-chart compact-empty"><span>◌</span><strong>No department data yet</strong><small>Department totals appear after records are added.</small></div>
+        </article>
+      </section>
+
+      <section class="panel students-panel" id="students">
+        <div class="panel-heading students-heading">
+          <div><h2>Student performance</h2><p>Student academic progress and attendance overview.</p></div>
+          <div class="table-controls">
+            <label class="table-search"><span>⌕</span><input id="studentSearch" type="search" placeholder="Search students..."></label>
+            <select id="departmentFilter"><option value="all">All departments</option><option>Engineering</option><option>Business</option><option>Arts &amp; Humanities</option><option>Sciences</option></select>
+            <button class="filter-button" id="filterButton">☷ Filter</button>
+            <button class="primary-button" data-add="students">＋ Student</button>
+          </div>
+        </div>
+        <div class="table-scroll"><table><thead><tr><th>STUDENT</th><th>STUDENT ID</th><th>DEPARTMENT</th><th>GPA</th><th>ATTENDANCE</th><th>STATUS</th><th></th></tr></thead><tbody id="studentRows"></tbody></table></div>
+        <div class="table-footer"><span id="resultCount">No student records yet</span><div class="pagination"><button id="prevPage" disabled>‹</button><button class="page-active">1</button><button id="nextPage" disabled>›</button></div></div>
+      </section>
+
+      <section class="detail-grid">
+        <article class="panel detail-panel" id="marks">
+          <div class="panel-heading"><div><h2>Student marks</h2><p>Internal and semester examination results</p></div><button class="primary-button" data-add="marks">＋ Marks</button></div>
+          <div class="table-scroll"><table><thead><tr><th>STUDENT</th><th>SEMESTER</th><th>SUBJECT</th><th>INTERNAL</th><th>END SEM</th><th>TOTAL</th><th>RESULT</th><th></th></tr></thead><tbody id="marksRows"><tr><td colspan="8">No marks have been added yet.</td></tr></tbody></table></div>
+        </article>
+        <article class="panel detail-panel" id="fees">
+          <div class="panel-heading"><div><h2>Fee details</h2><p>Fee account status by student and academic year</p></div><button class="primary-button" data-add="fees">＋ Fee record</button></div>
+          <div class="fee-summary"><div><span>Total fees</span><strong id="feeTotal">₹ 0</strong></div><div><span>Paid so far</span><strong id="feePaid">₹ 0</strong></div><div><span>Outstanding</span><strong id="feeDue">₹ 0</strong></div></div>
+          <div class="table-scroll"><table><thead><tr><th>STUDENT</th><th>ACADEMIC YEAR</th><th>TOTAL FEE</th><th>PAID</th><th>DUE</th><th></th></tr></thead><tbody id="feeRows"><tr><td colspan="6">No fee records have been added yet.</td></tr></tbody></table></div>
+        </article>
+        <article class="panel detail-panel" id="parents">
+          <div class="panel-heading"><div><h2>Parent information</h2><p>Parent and guardian contact records</p></div><button class="primary-button" data-add="parents">＋ Contact</button></div>
+          <div class="table-scroll"><table><thead><tr><th>PARENT / GUARDIAN</th><th>RELATION</th><th>STUDENT</th><th>PHONE</th><th>EMAIL</th><th></th></tr></thead><tbody id="parentRows"><tr><td colspan="6">No parent contacts have been added yet.</td></tr></tbody></table></div>
+        </article>
+        <article class="panel detail-panel" id="education">
+          <div class="panel-heading"><div><h2>Previous education</h2><p>Intermediate/12th and 10th standard details</p></div><button class="primary-button" data-add="education">＋ Education</button></div>
+          <div class="table-scroll"><table><thead><tr><th>STUDENT</th><th>INTERMEDIATE / 12TH BOARD</th><th>SCORE</th><th>10TH BOARD</th><th>SCORE</th><th></th></tr></thead><tbody id="educationRows"><tr><td colspan="6">No previous education details have been added yet.</td></tr></tbody></table></div>
+        </article>
+      </section>
+
+      <section class="timetable-section" id="schedule">
+        <article class="panel weekly-timetable-panel">
+          <div class="panel-heading timetable-heading"><div><div class="section-kicker">CLASS-WISE WEEKLY PLAN</div><h2>Section 9 timetable</h2><p>Room N-416 · Monday to Saturday</p></div><span class="timetable-chip">SECTION 9 · N-416</span></div>
+          <div class="timetable-scroll">
+            <table class="weekly-timetable">
+              <thead><tr><th>DAY</th><th>8:15–9:05</th><th>9:05–9:55</th><th>9:55–10:45</th><th>10:45–11:00</th><th>11:00–11:50</th><th>11:50–12:40</th><th>12:40–1:30</th><th>1:30–2:20</th><th>2:20–3:10</th><th>3:10–4:00</th></tr></thead>
+              <tbody>
+                <tr><th>Monday</th><td colspan="2">PC LAB (P)<small>N-506</small></td><td>API (L)<small>N-506</small></td><td>BREAK</td><td colspan="2">OT (T)<small>N-419</small></td><td>BREAK</td><td colspan="2">MFEF (T)<small>N-414B</small></td><td rowspan="6">EXPERIENTIAL LEARNING / SELF LEARNING / PROJECT</td></tr>
+                <tr><th>Tuesday</th><td colspan="2">ML (T)<small>N-512</small></td><td>LIB<small>N-512</small></td><td>BREAK</td><td colspan="2">CN (P)</td><td>BREAK</td><td colspan="2">MFEF (P)</td></tr>
+                <tr><th>Wednesday</th><td>MFEF (L)</td><td colspan="2">CN (T)</td><td>BREAK</td><td>COUN<small>N-419</small></td><td>CC<small>N-419</small></td><td>BREAK</td><td>NPTEL</td><td>—</td></tr>
+                <tr><th>Thursday</th><td>OT (L)<small>N-414B</small></td><td>MFEF (L)<small>N-414B</small></td><td>CC<small>N-414B</small></td><td>BREAK</td><td colspan="2">ML (P)</td><td>BREAK</td><td colspan="2" rowspan="3">TRAINING</td></tr>
+                <tr><th>Friday</th><td colspan="2">CE (T)<small>N-414B</small></td><td>API (L)<small>N-414B</small></td><td>BREAK</td><td>CN (L)<small>N-419</small></td><td>ML (L)<small>N-419</small></td><td>BREAK</td></tr>
+                <tr><th>Saturday</th><td colspan="2">API (P)</td><td>OT (L)</td><td>BREAK</td><td>ML (L)</td><td>CN (L)</td><td>BREAK</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="academic-calendar-section" id="academic-calendar">
+        <div class="calendar-header"><div><div class="section-kicker">B.TECH · 3RD &amp; 4TH YEAR</div><h2>Academic Calendar 2026–27</h2><p>Semester II · Week-by-week calendar</p></div><div class="calendar-release">Release date: <strong>31 Oct 2026</strong></div></div>
+        <div class="academic-calendar-scroll"><table class="academic-calendar"><thead><tr><th>WEEK</th><th>SUNDAY</th><th>MONDAY</th><th>TUESDAY</th><th>WEDNESDAY</th><th>THURSDAY</th><th>FRIDAY</th><th>SATURDAY</th></tr></thead><tbody id="calendarRows"></tbody></table></div>
+      </section>
+
+      <footer class="page-footer"><span>© 2026 Vignan University · Student Management Portal</span></footer>
+    </main>
+  </div>
+
+  <dialog id="recordDialog">
+    <form method="dialog" id="recordForm">
+      <div class="dialog-heading"><div><span class="eyebrow" id="recordEyebrow">NEW RECORD</span><h2 id="recordTitle">Add record</h2></div><button class="close-dialog" aria-label="Close">×</button></div>
+      <div id="recordFields" class="record-fields"></div>
+      <div class="dialog-actions"><button type="button" class="secondary-button" id="cancelRecord">Cancel</button><button type="submit" class="primary-button">Save record</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
